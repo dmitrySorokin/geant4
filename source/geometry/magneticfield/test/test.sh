@@ -74,6 +74,8 @@ do
   echo  " "
 done
 
+exit
+
 target=testProElectroMagField
 echo  "Compiling $target ... "
 ( cd $BUILD_DIR ; $MAKE $target )   || exit

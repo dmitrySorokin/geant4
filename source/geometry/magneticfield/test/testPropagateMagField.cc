@@ -448,10 +448,8 @@ G4bool testG4PropagatorInField(G4VPhysicalVolume*,     // *pTopNode,
 
     G4ChordFinder *pChordFndr= pMagFieldPropagator->GetChordFinder();
     
-    G4EquationOfMotion* equationOfMotion= nullptr;
-    equationOfMotion =        
-        pChordFndr->GetIntegrationDriver()->GetStepper()
-                         ->GetEquationOfMotion() ;
+    G4EquationOfMotion* equationOfMotion =
+        pChordFndr->GetIntegrationDriver()->GetEquationOfMotion();
     equationOfMotion->SetChargeMomentumMass( chargeState, 
 			            0.5 * proton_mass_c2, // Momentum in Mev/c
 					 proton_mass_c2 );
