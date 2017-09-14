@@ -23,7 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: G4MagIntegratorStepper.hh 97387 2016-06-02 10:03:42Z gcosmo $
+// $Id: G4MagIntegratorStepper.hh 104991 2017-07-03 18:20:42Z japost $
 //
 //
 // class G4MagIntegratorStepper
@@ -86,7 +86,7 @@ class G4MagIntegratorStepper
      inline void NormalisePolarizationVector( G4double vec[12] );
        // Simple utility function to (re)normalise 'unit spin' vector.
 
-     inline void RightHandSide( const double y[], double dydx[] );   
+     inline void RightHandSide( const double y[], double dydx[] ) const;
        // Utility method to supply the standard Evaluation of the
        // Right Hand side of the associated equation.
 
@@ -113,7 +113,7 @@ class G4MagIntegratorStepper
      inline void ResetfNORHSCalls(){ fNoRHSCalls = 0; }
        // Count number of calls to RHS method(s)
 
-     bool IsFSAL() { return fIsFSAL; }
+     bool IsFSAL() const { return fIsFSAL; }
    
   protected:
      void SetIntegrationOrder(int order) { fIntegrationOrder= order; }

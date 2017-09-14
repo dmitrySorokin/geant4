@@ -11,7 +11,7 @@
 #
 # Generated on : 29/9/2010
 #
-# $Id: sources.cmake 97598 2016-06-06 07:19:46Z gcosmo $
+# $Id: sources.cmake 97451 2016-06-03 08:54:58Z japost $
 #
 #------------------------------------------------------------------------------
 
@@ -36,7 +36,7 @@ GEANT4_DEFINE_MODULE(NAME G4magneticfield
         G4ChargeState.hh
         G4ChordFinder.hh
         G4ChordFinder.icc
-        G4ChordFinderSaf.hh
+        #G4ChordFinderSaf.hh
         G4ClassicalRK4.hh
         G4ConstRK4.hh
         G4DELPHIMagField.hh
@@ -101,6 +101,14 @@ GEANT4_DEFINE_MODULE(NAME G4magneticfield
         G4UniformElectricField.hh
         G4UniformGravityField.hh
         G4UniformMagField.hh
+        G4VIntegrationDriver.hh
+        G4IntegrationDriver.hh
+        G4IntegrationDriver.icc
+        G4RK547FEq1.hh
+        G4RK547FEq2.hh
+        G4RK547FEq3.hh
+        G4FieldUtils.hh
+        G4FieldUtils.icc
     SOURCES
         G4BogackiShampine23.cc
         G4BogackiShampine45.cc
@@ -108,7 +116,7 @@ GEANT4_DEFINE_MODULE(NAME G4magneticfield
         G4CashKarpRKF45.cc
         G4ChargeState.cc
         G4ChordFinder.cc
-        G4ChordFinderSaf.cc
+        #G4ChordFinderSaf.cc
         G4ClassicalRK4.cc
         G4ConstRK4.cc
         G4DELPHIMagField.cc
@@ -132,7 +140,6 @@ GEANT4_DEFINE_MODULE(NAME G4magneticfield
         G4FieldTrack.cc
         G4FSALBogackiShampine45.cc
         G4FSALDormandPrince745.cc
-        G4FSALIntegrationDriver.cc
         G4VFSALIntegrationStepper.cc
         G4HarmonicPolMagField.cc
         G4HelixExplicitEuler.cc
@@ -163,6 +170,10 @@ GEANT4_DEFINE_MODULE(NAME G4magneticfield
         G4UniformElectricField.cc
         G4UniformGravityField.cc
         G4UniformMagField.cc
+        G4RK547FEq1.cc
+        G4RK547FEq2.cc
+        G4RK547FEq3.cc
+        G4FieldUtils.cc
     GRANULAR_DEPENDENCIES
         G4globman
     GLOBAL_DEPENDENCIES

@@ -23,7 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: G4DormandPrince745.hh 97387 2016-06-02 10:03:42Z gcosmo $
+// $Id: G4DormandPrince745.hh 97285 2016-05-31 19:52:18Z japost $
 //
 //  Class desription: 
 //    An implementation of the 5th order embedded RK method from the paper

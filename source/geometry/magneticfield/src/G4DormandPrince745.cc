@@ -23,7 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: G4DormandPrince745.cc 101384 2016-11-16 11:03:44Z gcosmo $
+// $Id: G4DormandPrince745.cc 98878 2016-08-16 16:43:53Z japost $
 //
 // Class description:
 //

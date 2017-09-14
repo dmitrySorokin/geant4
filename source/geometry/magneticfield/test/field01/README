@@ -1,0 +1,18 @@
+$Id: README 88824 2015-03-11 15:57:24Z japost $
+-------------------------------------------------------------------
+
+     =========================================================
+     Geant4 - an Object-Oriented Toolkit for Simulation in HEP
+     =========================================================
+
+                            field01 (based on TestEm11)  
+                            -------------------------
+
+    Test for investigation of tracking in magnetic field 
+    and field dependent electromagnetic processes.
+
+	
+    This test has moved to examples/extended/field/field01, and is being refined 
+    into an example.
+
+    Only run script are now in this directory.

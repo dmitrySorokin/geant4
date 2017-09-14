@@ -24,7 +24,7 @@
 // ********************************************************************
 //
 //
-// $Id: G4UniformMagField.cc 96751 2016-05-04 09:39:38Z gcosmo $
+// $Id: G4UniformMagField.cc 96753 2016-05-04 09:49:38Z gcosmo $
 //
 //
 // Class for creation of uniform Magnetic Field

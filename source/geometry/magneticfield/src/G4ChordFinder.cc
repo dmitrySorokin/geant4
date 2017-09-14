@@ -24,7 +24,7 @@
 // ********************************************************************
 //
 //
-// $Id: G4ChordFinder.cc 101384 2016-11-16 11:03:44Z gcosmo $
+// $Id: G4ChordFinder.cc 105853 2017-08-23 16:35:57Z japost $
 //
 //
 // 25.02.97 - John Apostolakis - Design and implementation 
@@ -33,6 +33,7 @@
 #include <iomanip>
 
 #include "G4ChordFinder.hh"
+#include "G4MagIntegratorDriver.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4MagneticField.hh"
 #include "G4Mag_UsualEqRhs.hh"
@@ -41,11 +42,12 @@
 // #include "G4BogackiShampine23.hh"
 #include "G4BogackiShampine45.hh"
 #include "G4DormandPrince745.hh"
+#include "G4NystromRK4.hh"
 
 // ..........................................................................
 
-G4ChordFinder::G4ChordFinder(G4MagInt_Driver* pIntegrationDriver)
-  : fDefaultDeltaChord( 0.25 * mm ),      // Parameters
+G4ChordFinder::G4ChordFinder(G4VIntegrationDriver* pIntegrationDriver):
+    fDefaultDeltaChord( 0.25 * mm ),      // Parameters
     fDeltaChord( fDefaultDeltaChord ),    //   Internal parameters
     fFirstFraction(0.999), fFractionLast(1.00),  fFractionNextEstimate(0.98), 
     fMultipleRadius(15.0), 
@@ -68,9 +70,9 @@ G4ChordFinder::G4ChordFinder(G4MagInt_Driver* pIntegrationDriver)
 
 // ..........................................................................
 
-G4ChordFinder::G4ChordFinder( G4MagneticField*        theMagField,
-                              G4double                stepMinimum, 
-                              G4MagIntegratorStepper* pItsStepper )
+G4ChordFinder::G4ChordFinder(G4MagneticField* theMagField,
+                             G4double stepMinimum,
+                             G4MagIntegratorStepper* pItsStepper)
   : fDefaultDeltaChord( 0.25 * mm ),     // Constants 
     fDeltaChord( fDefaultDeltaChord ),   // Parameters
     fFirstFraction(0.999), fFractionLast(1.00),  fFractionNextEstimate(0.98), 
@@ -98,10 +100,11 @@ G4ChordFinder::G4ChordFinder( G4MagneticField*        theMagField,
   if( pItsStepper == 0 )
   { 
      pItsStepper = fDriversStepper =
-         new G4ClassicalRK4(pEquation);   // The old default
+         // new G4ClassicalRK4(pEquation);   // The old default
          // new G4CashKarpRKF45(pEquation);
          // new G4DormandPrince745(pEquation); 
          // new G4BogackiShampine45(pEquation);
+        new G4NystromRK4(pEquation, 0.1*millimeter ); // *clhep::millimeter );
 
      fAllocatedStepper= true;
   }
@@ -234,6 +237,8 @@ G4ChordFinder::FindNextChord( const  G4FieldTrack& yStart,
 {
   // Returns Length of Step taken
 
+  // G4cout << ">G4ChordFinder::FindNextChord called." << G4endl;
+   
   G4FieldTrack yCurrent=  yStart;  
   G4double    stepTrial, stepForAccuracy;
   G4double    dydx[G4FieldTrack::ncompSVEC]; 
