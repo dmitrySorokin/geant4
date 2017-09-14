@@ -624,8 +624,7 @@ G4bool G4BrentLocator::EstimateIntersectionPoint(
 
         G4double Sub_len = (all_len-did_len)/(2.);
         G4FieldTrack start = CurrentA_PointVelocity;
-        G4MagInt_Driver* integrDriver =
-                         GetChordFinderFor()->GetIntegrationDriver();
+        auto integrDriver = GetChordFinderFor()->GetIntegrationDriver();
         integrDriver->AccurateAdvance(start, Sub_len, GetEpsilonStepFor());
         *ptrInterMedFT[depth] = start;
         CurrentB_PointVelocity = *ptrInterMedFT[depth];

@@ -255,31 +255,11 @@ AlongStepGetPhysicalInteractionLength( const G4Track&  track,
   }
   G4double momentumMagnitude = pParticle->GetTotalMomentum() ;
 
-  if( fieldExertsForce )
-  {
-     G4EquationOfMotion*    equationOfMotion = 0; 
-
-     // equationOfMotion = 
-     //     (fFieldPropagator->GetChordFinder()->GetIntegrationDriver()->GetStepper())
-     //      ->GetEquationOfMotion();
-
-     // Consolidate into auxiliary method G4EquationOfMotion* GetEquationOfMotion() 
-     //  equationOfMotion= fFieldPropagator->GetCurrentEquationOfMotion();
-     G4MagIntegratorStepper*  pStepper= 0;
-
-     G4ChordFinder*    pChordFinder= fFieldPropagator->GetChordFinder();
-     if( pChordFinder ) 
-     {
-        G4MagInt_Driver*  pIntDriver= 0; 
-
-        pIntDriver= pChordFinder->GetIntegrationDriver(); 
-        if( pIntDriver )
-        {
-           pStepper= pIntDriver->GetStepper(); 
-        }
-        if( pStepper )
-        {
-           equationOfMotion= pStepper->GetEquationOfMotion();
+  if( fieldExertsForce ) {
+     G4EquationOfMotion* equationOfMotion = nullptr;
+     if(auto pChordFinder = fFieldPropagator->GetChordFinder()) {
+        if(auto pIntDriver = pChordFinder->GetIntegrationDriver()) {
+           equationOfMotion = pIntDriver->GetEquationOfMotion();
         }
      }
      // End of proto GetEquationOfMotion()

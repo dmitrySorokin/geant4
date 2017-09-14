@@ -1169,8 +1169,7 @@ G4PathFinder::DoNextCurvedStep( const G4FieldTrack &initialState,
 
 
   G4EquationOfMotion* equationOfMotion = 
-     (fpFieldPropagator->GetChordFinder()->GetIntegrationDriver()->GetStepper())
-     ->GetEquationOfMotion();
+    fpFieldPropagator->GetChordFinder()->GetIntegrationDriver()->GetEquationOfMotion();
 
   equationOfMotion->SetChargeMomentumMass( *(initialState.GetChargeState()), 
                                            initialState.GetMomentum().mag2(),

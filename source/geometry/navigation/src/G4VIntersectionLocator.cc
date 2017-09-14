@@ -195,7 +195,7 @@ ReEstimateEndpoint( const G4FieldTrack& CurrentStateA,
                           G4double      ) // curveDist )    // NOT used
 {  
   G4FieldTrack newEndPoint( CurrentStateA );
-  G4MagInt_Driver* integrDriver = GetChordFinderFor()->GetIntegrationDriver(); 
+  auto integrDriver = GetChordFinderFor()->GetIntegrationDriver();
 
   G4FieldTrack retEndPoint( CurrentStateA );
   G4bool goodAdvance;

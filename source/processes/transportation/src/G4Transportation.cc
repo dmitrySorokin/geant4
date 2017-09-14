@@ -328,8 +328,7 @@ AlongStepGetPhysicalInteractionLength( const G4Track&  track,
      // chargeState.SetPDGSpin(pParticleDef->GetPDGSpin() );   // Provisionally in same object
 
      G4EquationOfMotion* equationOfMotion = 
-     (fFieldPropagator->GetChordFinder()->GetIntegrationDriver()->GetStepper())
-     ->GetEquationOfMotion();
+        fFieldPropagator->GetChordFinder()->GetIntegrationDriver()->GetEquationOfMotion();
 
 //     equationOfMotion->SetChargeMomentumMass( particleCharge,
      equationOfMotion->SetChargeMomentumMass( chargeState,

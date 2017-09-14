@@ -726,7 +726,7 @@ G4int G4PropagatorInField::SetVerboseLevel( G4int level )
   // Forward the verbose level 'reduced' to ChordFinder,
   // MagIntegratorDriver ... ? 
   //
-  G4MagInt_Driver* integrDriver= GetChordFinder()->GetIntegrationDriver(); 
+  auto integrDriver = GetChordFinder()->GetIntegrationDriver();
   integrDriver->SetVerboseLevel( fVerboseLevel - 2 );
   G4cout << "Set Driver verbosity to " << fVerboseLevel - 2 << G4endl;
 

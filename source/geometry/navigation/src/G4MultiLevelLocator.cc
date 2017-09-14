@@ -560,8 +560,7 @@ G4bool G4MultiLevelLocator::EstimateIntersectionPoint(
 
         G4double Sub_len = (all_len-did_len)/(2.);
         G4FieldTrack midPoint = CurrentA_PointVelocity;
-        G4MagInt_Driver* integrDriver
-                       = GetChordFinderFor()->GetIntegrationDriver();
+        auto integrDriver = GetChordFinderFor()->GetIntegrationDriver();
         G4bool fullAdvance=              
            integrDriver->AccurateAdvance(midPoint, Sub_len, fiEpsilonStep);
                          
