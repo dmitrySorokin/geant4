@@ -46,6 +46,8 @@
 
 #include "G4ModifiedMidpoint.hh"
 
+#include "G4FieldTrack.hh"
+
 enum class step_result{
     success,
     fail

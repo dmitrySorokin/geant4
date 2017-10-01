@@ -111,7 +111,7 @@ GEANT4_DEFINE_MODULE(NAME G4magneticfield
         G4FieldUtils.icc
         G4BulirschStoer.hh
         G4BulirschStoer.icc
-        #BulirschStoerDriver.hh
+        G4BulirschStoerDriver.hh
         G4ModifiedMidpoint.hh
         G4ModifiedMidpoint.icc
     SOURCES
@@ -180,7 +180,7 @@ GEANT4_DEFINE_MODULE(NAME G4magneticfield
         G4RK547FEq3.cc
         G4FieldUtils.cc
         G4BulirschStoer.cc
-        #BulirschStoerDriver.cc
+        G4BulirschStoerDriver.cc
         G4ModifiedMidpoint.cc
     GRANULAR_DEPENDENCIES
         G4globman

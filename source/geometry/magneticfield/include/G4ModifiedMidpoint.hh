@@ -41,8 +41,8 @@
 #define G4MODIFIED_MIDPOINT_HH
 
 #include "G4Types.hh"
-#include "G4FieldTrack.hh"
 #include "G4EquationOfMotion.hh"
+#include "G4FieldTrack.hh"
 
 namespace internal {
 
@@ -53,27 +53,29 @@ public:
         G4int nvar = 6,
         G4int steps = 2);
 
-    ~G4ModifiedMidpoint();
+    ~G4ModifiedMidpoint() = default;
 
-    void do_step(
-        const G4double xIn[],
-        const G4double dxdtIn[],
-        G4double xOut[],
-        G4double dt);
+    void DoStep(
+        const G4double yIn[],
+        const G4double dydxIn[],
+        G4double yOut[],
+        G4double hstep) const;
 
-    inline void set_steps(G4int steps);
+    void DoStep(
+        const G4double yIn[],
+        const G4double dydxIn[],
+        G4double yOut[],
+        G4double hstep,
+        G4double yMid[],
+        G4double derivs[][G4FieldTrack::ncompSVEC]) const;
 
-    inline G4int steps() const;
+    inline void SetSteps(G4int steps);
+    inline G4int Steps() const;
 
 private:
     G4EquationOfMotion* fEquation;
     G4int fnvar;
     G4int fsteps;
-
-    G4double x0[G4FieldTrack::ncompSVEC];
-    G4double x1[G4FieldTrack::ncompSVEC];
-    G4double dxdt[G4FieldTrack::ncompSVEC];
-    G4double tmp[G4FieldTrack::ncompSVEC];
 };
 
 } // internal

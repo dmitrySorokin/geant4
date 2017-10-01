@@ -81,15 +81,15 @@ step_result G4BulirschStoer::try_step(
     for(G4int k = 0; k <= m_current_k_opt+1; ++k)
     {
         /* the stage counts are stored in m_interval_sequence */
-        m_midpoint.set_steps(m_interval_sequence[k]);
+        m_midpoint.SetSteps(m_interval_sequence[k]);
         if( k == 0 )
         {
-            m_midpoint.do_step(in, dxdt, out, dt);
+            m_midpoint.DoStep(in, dxdt, out, dt);
             /* the first step, nothing more to do */
         }
         else
         {
-            m_midpoint.do_step(in, dxdt, m_table[k-1], dt);
+            m_midpoint.DoStep(in, dxdt, m_table[k-1], dt);
             extrapolate(k, out);
             // get error estimate
             for (G4int i = 0; i < fnvar; ++i){
