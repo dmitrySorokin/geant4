@@ -1,5 +1,7 @@
 #include "G4ModifiedMidpoint.hh"
 
+namespace internal {
+
 G4ModifiedMidpoint::G4ModifiedMidpoint(
     G4EquationOfMotion* equation,
     G4int nvar,
@@ -15,7 +17,7 @@ G4ModifiedMidpoint::~G4ModifiedMidpoint()
 }
 
 
-void G4ModifiedMidpoint::DoStep(
+void G4ModifiedMidpoint::do_step(
     const G4double xIn[],
     const G4double dxdtIn[],
     G4double xOut[],
@@ -52,7 +54,7 @@ void G4ModifiedMidpoint::DoStep(
     }
 }
 
-
+} // internal
 
 
 

@@ -44,6 +44,8 @@
 #include "G4FieldTrack.hh"
 #include "G4EquationOfMotion.hh"
 
+namespace internal {
+
 class G4ModifiedMidpoint {
 public:
     G4ModifiedMidpoint(
@@ -53,15 +55,15 @@ public:
 
     ~G4ModifiedMidpoint();
 
-    void DoStep(
+    void do_step(
         const G4double xIn[],
         const G4double dxdtIn[],
         G4double xOut[],
         G4double dt);
 
-    inline void SetSteps(G4int steps);
+    inline void set_steps(G4int steps);
 
-    inline G4int Steps() const;
+    inline G4int steps() const;
 
 private:
     G4EquationOfMotion* fEquation;
@@ -73,6 +75,8 @@ private:
     G4double dxdt[G4FieldTrack::ncompSVEC];
     G4double tmp[G4FieldTrack::ncompSVEC];
 };
+
+} // internal
 
 #include "G4ModifiedMidpoint.icc"
 
