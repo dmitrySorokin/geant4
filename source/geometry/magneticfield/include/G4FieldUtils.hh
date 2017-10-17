@@ -25,7 +25,7 @@
 //
 // $Id: $
 //
-// Helper namespace 'magneticfield'
+// Helper namespace 'field_utils'
 //
 // Description:
 //    Simple methods to extract vectors from arrays in conventions of
